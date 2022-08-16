@@ -47,6 +47,24 @@ void insertAtNode(Node* &tail, int element , int d){
 
     }
 }
+bool iscircular(Node* &tail){
+    // empty list
+    if(tail == NULL){
+        return true;
+    }
+
+    Node* temp = tail->next;
+
+    while(temp != NULL && temp != tail){
+        temp = temp ->next;
+    }
+
+    if(temp == tail){
+        return true;
+    }
+
+    return false;
+}
 void print (Node* tail){
     Node* temp = tail;
 
@@ -95,14 +113,22 @@ int main(){
     insertAtNode(tail,3,5);
     print(tail); 
 
-    // insertAtNode(tail,5,7);
-    // print(tail); 
+    insertAtNode(tail,5,7);
+    print(tail); 
 
-    // insertAtNode(tail,7,9);
-    // print(tail); 
+    insertAtNode(tail,7,9);
+    print(tail); 
 
-    deleteNode(tail ,5);
-    print(tail);
+    // deleteNode(tail ,5);
+    // print(tail);
+
+    if(iscircular(tail)){
+        cout << "Linked list is circular in nature" << endl; 
+    }
+    else{
+        cout << "Linked list is not circular";
+    }
+
 
     return 0;
 }
